@@ -46,6 +46,8 @@ class NewPasswordController extends Controller
                     'remember_token' => Str::random(60),
                 ])->save();
 
+                flash()->addSuccess("Password has been reset.");
+
                 event(new PasswordReset($user));
             }
         );
